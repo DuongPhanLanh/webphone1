@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,18 +31,32 @@
       <div class="col-12 col-lg-10 col-xl-8">
         <div class="row gy-5 justify-content-center">
           <div class="col-12 col-lg-5">
-			<form action="logindumamay" method="post">
+          
+          
+          <!-- Mục failedLog trong LoginServlet.java -->
+				<c:if test="${not empty failedLog }">
+					<h5 class="text-center text-danger">${failedLog}</h5>
+					<c:remove var="failedLog" scope="session"/>
+				</c:if>
+				 
+				<!-- Mục trueLog trong LogoutServlet.java --> 
+				<c:if test="${not empty trueLog }">
+					<h5 class="text-center text-danger">${trueLog}</h5>
+					<c:remove var="trueLog" scope="session"/>
+				</c:if>
+          
+			<form action="login" method="post">
               <div class="row gy-3 overflow-hidden">
                 <div class="col-12">
-				  <div class="form-floating mb-3">
-				    <input type="text" class="form-control border-0 border-bottom rounded-0" name="user" id="user" placeholder="Username" required>
-				    <label for="user" class="form-label">Username</label>
-				  </div>
-				</div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="gmail" id="firstName" placeholder="First Name" required>
+                    <label for="gmail" class="form-label">Gmail</label>
+                  </div>
+                </div>
 					
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control border-0 border-bottom rounded-0" name="pass" id="pass" value="" placeholder="Password" required>
+                    <input type="password" class="form-control border-0 border-bottom rounded-0" name="password" id="password" value="" placeholder="Password" required>
                     <label for="password" class="form-label">Password</label>
                   </div>
                 </div>
@@ -54,11 +70,15 @@
                         </label>
                       </div>
                     </div>
+                    
+                    <!-- 
                     <div class="col-6">
                       <div class="text-end">
                         <a href="#!" class="link-secondary text-decoration-none">Forgot password?</a>
                       </div>
-                    </div>
+                    </div>                   
+                     -->
+                    
                   </div>
                 </div>
                 <div class="col-12">

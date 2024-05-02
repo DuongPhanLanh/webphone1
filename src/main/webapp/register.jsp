@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,17 +27,30 @@
       <div class="col-12 col-lg-10 col-xl-8">
         <div class="row gy-5 justify-content-center">
           <div class="col-12 col-lg-5">
-            <form action="signupconcac" method="post">
+          
+          		<c:if test="${not empty trueMess }">
+					<h5 class="text-center text-success">${trueMess}</h5>
+					<c:remove var="trueMess" scope="session"/>
+				</c:if>
+          		<c:if test="${not empty failMess }">
+					<h5 class="text-center text-danger">${failMess}</h5>
+					<c:remove var="failedMes" scope="session"/>
+				</c:if>
+          
+          
+            <form action="register" method="post">
               <div class="row gy-3 overflow-hidden">
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="firstName" id="firstName" placeholder="First Name" required>
+                  
+                  
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="gmail" id="firstName" placeholder="First Name" required>
                     <label for="gmail" class="form-label">Gmail</label>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="lastName" id="lastName" placeholder="Last Name" required>
+                    <input type="number" class="form-control border-0 border-bottom rounded-0" name="phone" id="lastName" placeholder="Last Name" required>
                     <label for="phone" class="form-label">Số điện thoại</label>
                   </div>
                 </div>
@@ -51,6 +66,9 @@
                     <label for="password" class="form-label">Password</label>
                   </div>
                 </div>
+                
+                
+                
                 <div class="col-12">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" name="iAgree" id="iAgree" required>
@@ -58,6 +76,9 @@
                       I agree to the <a href="#!" class="link-primary text-decoration-none">terms and conditions</a>
                     </label>
                   </div>
+                  
+                  
+                  
                 </div>
                 <div class="col-12">
                   <div class="d-grid">
