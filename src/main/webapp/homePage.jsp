@@ -1,3 +1,9 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.entity.product"%>
+<%@page import="java.util.List"%>
+<%@page import="com.DB.DBConnect"%>
+<%@page import="com.DAO.phoneDAOImpl"%>
+<%@page import="com.entity.userPhone"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -8,6 +14,11 @@
 <%@include file="all_component/allCss.jsp" %>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+	
+	<%
+		userPhone u =(userPhone)session.getAttribute("userobj");
+	%>
+	
 <%@include file="home_component/navbar.jsp" %>
 
 <section id="billboard" class="position-relative overflow-hidden bg-light-blue">
@@ -118,114 +129,26 @@
         </div>
       </div>
     </section>
+    
+    
+    
+    
+    
+    
+    
     <section id="mobile-products" class="product-store position-relative padding-large no-padding-top">
-      <div class="container">
-        <div class="row">
+    
+    
+    
+    
+     <div class="container px-4 px-lg-5 mt-5">
           <div class="display-header d-flex justify-content-between pb-3">
             <h2 class="display-7 text-dark text-uppercase">Mobile Products</h2>
             <div class="btn-right">
-              <a href="index.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+              <a href="U_Phone_Mobile.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
             </div>
           </div>
-        <!--   <div class="swiper product-swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item1.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                    </div>
-                  </div>
-<div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 10</a>
-                    </h3>
-                    <span class="item-price text-primary">$980</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item2.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 11</a>
-                    </h3>
-                    <span class="item-price text-primary">$1100</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item3.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 8</a>
-                    </h3>
-                    <span class="item-price text-primary">$780</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item4.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 13</a>
-                    </h3>
-                    <span class="item-price text-primary">$1500</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item5.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 12</a>
-                    </h3>
-                    <span class="item-price text-primary">$1300</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-     <div class="swiper product-swiper">
-    <div class="swiper-wrapper">
-        <c:forEach items="${listP}" var="o" varStatus="loop">
+    <!--    <c:forEach items="${listP}" var="o" varStatus="loop">
             <c:if test="${loop.index < 6}">
                 <div class="swiper-slide">
                     <div class="product-card position-relative">
@@ -246,135 +169,216 @@
                     </div>
                 </div>
             </c:if>
-        </c:forEach>
-    </div>
-</div>
-
-      
+        </c:forEach> -->
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <%
+    
+	    phoneDAOImpl dao = new phoneDAOImpl(DBConnect.getConn());
+	    List<product> list = dao.getMobie();
+	    
+	    for(product p : list) 
+	    {%>
+        	<div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="img/<%=p.getImg() %>" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder"><%=p.getName() %></h5>
+                                    <h5 class="fw-bolder"><%=p.getCategory() %></h5>
+                                    <!-- Product price-->
+                                    <h5 class="fw-bolder"><span style="text-decoration: line-through;"><%=p.getPrice() %></span>
+                                    </h5>
+                                    <%=p.getTotalPrice() %>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="Detail.jsp?pid=<%=p.getId()%>">View options</a>
+                   
+                                </div>
+                               
+                            </div>
+                        </div>
+                </div>	
+	    <%}
+	    
+	    %>
+  </div>      
       <div class="swiper-pagination position-absolute text-center"></div>
     </section>
     <section id="ipad-products" class="product-store padding-large position-relative">
-      <div class="container">
+      <div class="container px-4 px-lg-5 mt-5">
         <div class="row">
           <div class="display-header d-flex justify-content-between pb-3">
             <h2 class="display-7 text-dark text-uppercase">Ipad Products</h2>
             <div class="btn-right">
-              <a href="index.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+              <a href="U_Phone_IPAD.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
             </div>
           </div>
       </div>
-     	 <div class="swiper product-swiper">
-    <div class="swiper-wrapper">
-        <c:forEach items="${listP}" var="o" varStatus="loop">
-            <c:if test="${loop.index >= 8 && loop.index < 14}">
-                <div class="swiper-slide">
-                    <div class="product-card position-relative">
-                        <div class="image-holder">
-                            <img src="${o.image}" alt="product-item" class="img-fluid">
-                        </div>
-                        <div class="cart-concern position-absolute">
-                            <div class="cart-button d-flex">
-                                <a href="#" class="btn btn-medium btn-black">Add to Cart</a>
+        <!--  -->
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <%
+    
+	    phoneDAOImpl dao1 = new phoneDAOImpl(DBConnect.getConn());
+	    List<product> list1 = dao1.getIPAD();
+	    
+	    for(product p : list1) 
+	    {%>
+        	<div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="img/<%=p.getImg() %>" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder"><%=p.getName() %></h5>
+                                    <h5 class="fw-bolder"><%=p.getCategory() %></h5>
+                                    <!-- Product price-->
+                                    <h5 class="fw-bolder"><span style="text-decoration: line-through;"><%=p.getPrice() %></span>
+                                    </h5>
+                                    <%=p.getTotalPrice() %>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="Detail.jsp?pid=<%=p.getId()%>">View options</a>
+                                
+                                </div>
+                               
                             </div>
                         </div>
-                        <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                            <h3 class="card-title text-uppercase">
-                                <a href="#">${o.title}</a>
-                            </h3>
-                            <span class="item-price text-primary">${o.formattedPrice}</span>
-                        </div>
-                    </div>
-                </div>
-
-            </c:if>
-        </c:forEach>
-    </div>
+                </div>	
+	    <%}
+	    
+	    %>
+  </div>      
+      <div class="swiper-pagination position-absolute text-center"></div>
 </div>
  </section>
  
  
     <section id="macbook-products" class="product-store padding-large position-relative">
-      <div class="container">
+      <div class="container px-4 px-lg-5 mt-5">
         <div class="row">
           <div class="display-header d-flex justify-content-between pb-3">
             <h2 class="display-7 text-dark text-uppercase">Macbook Products</h2>
             <div class="btn-right">
-              <a href="index.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+              <a href="U_Phone_MACBOOK.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
             </div>
           </div>
       </div>
       </div>
-     	 <div class="swiper product-swiper">
-    <div class="swiper-wrapper">
-        <c:forEach items="${listP}" var="o" varStatus="loop">
-            <c:if test="${loop.index >= 14 && loop.index < 24}">
-                <div class="swiper-slide">
-                    <div class="product-card position-relative">
-                        <div class="image-holder">
-                            <img src="${o.image}" alt="product-item" class="img-fluid">
-                        </div>
-                        <div class="cart-concern position-absolute">
-                            <div class="cart-button d-flex">
-                                <a href="#" class="btn btn-medium btn-black">Add to Cart</a>
+        <!--  -->
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <%
+    
+	    phoneDAOImpl dao2 = new phoneDAOImpl(DBConnect.getConn());
+	    List<product> list2 = dao2.getMACBOOK();
+	    
+	    for(product p : list2) 
+	    {%>
+        	<div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="img/<%=p.getImg() %>" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder"><%=p.getName() %></h5>
+                                    <h5 class="fw-bolder"><%=p.getCategory() %></h5>
+                                    <!-- Product price-->
+                                    <h5 class="fw-bolder"><span style="text-decoration: line-through;"><%=p.getPrice() %></span>
+                                    </h5>
+                                    <%=p.getTotalPrice() %>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="Detail.jsp?pid=<%=p.getId()%>">View options</a>
+                                
+                                </div>
+                               
                             </div>
                         </div>
-                        <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                            <h3 class="card-title text-uppercase">
-                                <a href="detail?pid=${o.id}">${o.title}</a>
-                            </h3>
-                            <span class="item-price text-primary">${o.formattedPrice}</span>
-                        </div>
-                    </div>
-                </div>
-
-            </c:if>
-        </c:forEach>
-    </div>
-    </div>
+                </div>	
+	    <%}
+	    
+	    %>
+ </div>      
+      <div class="swiper-pagination position-absolute text-center"></div>
  <div class="swiper-pagination position-absolute text-center"></div>
     </section>
     
     
     <section id="aw-products" class="product-store padding-large position-relative">
-      <div class="container">
+      <div class="container px-4 px-lg-5 mt-5">
         <div class="row">
           <div class="display-header d-flex justify-content-between pb-3">
             <h2 class="display-7 text-dark text-uppercase">Watch Products</h2>
             <div class="btn-right">
-              <a href="index.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+              <a href="U_Phone_Applewatch.jsp" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
             </div>
           </div>
       </div>
-      
-    <%--  	 <div class="swiper product-swiper">
-    <div class="swiper-wrapper">
-        <c:forEach items="${listP}" var="o" varStatus="loop">
-            <c:if test="${loop.index >= 24 && loop.index < 27}">
-                <div class="swiper-slide">
-                    <div class="product-card position-relative">
-                        <div class="image-holder">
-                            <img src="${o.image}" alt="product-item" class="img-fluid">
-                        </div>
-                        <div class="cart-concern position-absolute">
-                            <div class="cart-button d-flex">
-                                <a href="#" class="btn btn-medium btn-black">Add to Cart</a>
+        <!--  -->
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <%
+    
+	    phoneDAOImpl dao3 = new phoneDAOImpl(DBConnect.getConn());
+	    List<product> list3 = dao3.getAPPLWACTH();
+	    
+	    for(product p : list3) 
+	    {%>
+        	<div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="img/<%=p.getImg() %>" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder"><%=p.getName() %></h5>
+                                    <h5 class="fw-bolder"><%=p.getCategory() %></h5>
+                                    <!-- Product price-->
+                                    <h5 class="fw-bolder"><span style="text-decoration: line-through;"><%=p.getPrice() %></span>
+                                    </h5>
+                                    <%=p.getTotalPrice() %>
+                                </div>
+                            </div>
+                            <!-- Product actions -->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="Detail.jsp?pid=<%=p.getId()%>">View options</a>
+                                
+                                </div>
                             </div>
                         </div>
-                        <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                            <h3 class="card-title text-uppercase">
-                                <a href="#">${o.title}</a>
-                            </h3>
-                            <span class="item-price text-primary">${o.formattedPrice}</span>
-                        </div>
-                    </div>
-                </div>
-
-            </c:if>
-        </c:forEach>
-    </div> --%>
+                </div>	
+	    <%}
+	    
+	    %>
+  </div>      
+    </div> 
     </div>
       <div class="swiper-pagination position-absolute text-center"></div>
     </section>
+    
+    
+    
+    
+    
+    
+    
+    
     <section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge" style="background-image: url('images/single-image1.png');background-position: right; background-repeat: no-repeat;">
       <div class="row d-flex flex-wrap align-items-center">
         <div class="col-md-6 col-sm-12">

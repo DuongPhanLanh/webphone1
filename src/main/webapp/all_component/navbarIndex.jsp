@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -18,7 +20,20 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    
+                    <c:if test="${not empty userobj }">
+						<form class="d-flex">
+                       
+                        <a href="#" class="btn btn-outline-dark me-2">${userobj.name }</a>
+                        
+                        <a href="logOut" class="btn btn-outline-dark me-2">LOGOUT</a>
+                        
+                    </form>
+					
+					</c:if>
+					
+					<c:if test="${empty userobj }">
+						<form class="d-flex">
                         <button class="btn btn-outline-dark me-2"  type="submit">
                             <i class="bi-cart-fill me-1"></i> Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -26,6 +41,11 @@
                         <a href="login.jsp" class="btn btn-outline-dark me-2">LOGIN</a>
                         
                     </form>
+					
+					</c:if>
+                    
+                    
+                    
                 </div>
             </div>
         </nav>
@@ -39,7 +59,7 @@
             </div>
         </header>
         <!-- Section-->
-  <section class="py-5">
+  <section class="py-2">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <%--  <c:forEach var="o" items="${listP}">

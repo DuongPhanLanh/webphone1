@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Trang chủ</title>
+<title>Đăng nhập</title>
 <%@include file="all_component/allCss.jsp" %>
 </head>
 <body>
