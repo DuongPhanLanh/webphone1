@@ -126,8 +126,36 @@ private Connection conn;
 
 	@Override
 	public List<product> getPhoneBySearch(String ch) {
-		// TODO Auto-generated method stub
-		return null;
+		List<product> list = new ArrayList<product>();
+		product p = null;
+		
+		try {
+			String sql = "SELECT * FROM phonedtl WHERE name LIKE ? OR category LIKE ? OR description LIKE ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, "%"+ch+"%");
+			ps.setString(2, "%"+ch+"%");
+			ps.setString(3, "%"+ch+"%");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				p = new product();
+				p.setId(rs.getInt(1));
+	            p.setName(rs.getString(2));
+	            p.setImg(rs.getString(3));
+	            p.setCategory(rs.getString(4)); 
+	            p.setDescription(rs.getString(5));
+	            p.setPrice(rs.getDouble(6));
+	            p.setStock(rs.getInt(7));
+	            p.setDiscount(rs.getDouble(8));
+	            p.setTotalPrice(rs.getDouble(9));
+	            list.add(p);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 
@@ -178,7 +206,7 @@ private Connection conn;
 			
 			// so luong co the hien thi
 			int i = 0;
-			while (rs.next() && i<=6) {
+			while (rs.next() && i<=4) {
 				p = new product();
 				p.setId(rs.getInt(1));
 	            p.setName(rs.getString(2));
@@ -213,7 +241,7 @@ private Connection conn;
 			
 			// so luong co the hien thi
 			int i = 0;
-			while (rs.next() && i<=6) {
+			while (rs.next() && i<=4) {
 				p = new product();
 				p.setId(rs.getInt(1));
 	            p.setName(rs.getString(2));
@@ -247,7 +275,7 @@ private Connection conn;
 			
 			// so luong co the hien thi
 			int i = 0;
-			while (rs.next() && i<=6) {
+			while (rs.next() && i<=4) {
 				p = new product();
 				p.setId(rs.getInt(1));
 	            p.setName(rs.getString(2));
@@ -281,7 +309,7 @@ private Connection conn;
 			
 			// so luong co the hien thi
 			int i = 0;
-			while (rs.next() && i<=6) {
+			while (rs.next() && i<=4) {
 				p = new product();
 				p.setId(rs.getInt(1));
 	            p.setName(rs.getString(2));
@@ -427,6 +455,40 @@ private Connection conn;
 	            p.setTotalPrice(rs.getDouble(9));
 				list.add(p);
 			
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+	@Override
+	public List<product> ListPhone() {
+		List<product> list = new ArrayList<product>();
+		product p = null;
+		
+		try {
+			String sql = "SELECT * FROM phonedtl ORDER BY id DESC";
+			PreparedStatement ps = conn.prepareStatement(sql);
+	//		ps.setString(1, "MACBOOK");
+			ResultSet rs = ps.executeQuery();
+			
+			// so luong co the hien thi
+			int i = 0;
+			while (rs.next() && i<=4) {
+				p = new product();
+				p.setId(rs.getInt(1));
+	            p.setName(rs.getString(2));
+	            p.setImg(rs.getString(3));
+	            p.setCategory(rs.getString(4)); 
+	            p.setDescription(rs.getString(5));
+	            p.setPrice(rs.getDouble(6));
+	            p.setStock(rs.getInt(7));
+	            p.setDiscount(rs.getDouble(8));
+	            p.setTotalPrice(rs.getDouble(9));
+				list.add(p);
+				i++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

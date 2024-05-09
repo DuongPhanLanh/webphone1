@@ -385,7 +385,7 @@
           <div class="text-content offset-4 padding-medium">
             <h3>10% off</h3>
             <h2 class="display-2 pb-5 text-uppercase text-dark">New year sale</h2>
-            <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Sale</a>
+            <a href="ShopSale.jsp" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Sale</a>
           </div>
         </div>
         <div class="col-md-6 col-sm-12">
@@ -447,7 +447,7 @@
                   <span class="meta-category">- Camera</span>
                 </div>
                 <h3 class="card-title">
-                  <a href="#">Top 10 Small Camera In The World</a>
+                  <a href="https://www.mysmartprice.com/gear/mobiles/mobiles-features/best-camera-phone-in-world/">Top 10 Small Camera In The World</a>
                 </h3>
               </div>
             </div>
@@ -474,7 +474,8 @@
                 <div class="swiper-slide text-center d-flex justify-content-center">
                   <div class="review-item col-md-10">
                     <i class="icon icon-review"></i>
-                    <blockquote>“Tempus oncu enim pellen tesque este pretium in neque, elit morbi sagittis lorem habi mattis Pellen tesque pretium feugiat vel morbi suspen dise sagittis lorem habi tasse morbi.”</blockquote>
+                    <blockquote>“Thời gian càng trôi, giá cả càng tăng lên, với sự tiện lợi không có giá trị, nhưng sự xa hoa không thể tránh khỏi. 
+                    Với giá cả cao, mọi thứ trở nên xa xỉ và khó chịu. Nhưng giá cao không đảm bảo sự thoải mái.”</blockquote>
                     <div class="rating">
                       <svg class="star star-fill">
                         <use xlink:href="#star-fill"></use>
@@ -500,7 +501,8 @@
                 <div class="swiper-slide text-center d-flex justify-content-center">
                   <div class="review-item col-md-10">
                     <i class="icon icon-review"></i>
-                    <blockquote>“A blog is a digital publication that can complement a website or exist independently. A blog may include articles, short posts, listicles, infographics, videos, and other digital content.”</blockquote>
+                    <blockquote>"Blog là một ấn phẩm kỹ thuật số có thể bổ sung cho một trang web hoặc tồn tại độc lập. 
+                    Một blog có thể bao gồm các bài viết, bài đăng ngắn, danh sách, đồ họa thông tin, video và nội dung kỹ thuật số khác."</blockquote>
                     <div class="rating">
                       <svg class="star star-fill">
                         <use xlink:href="#star-fill"></use>

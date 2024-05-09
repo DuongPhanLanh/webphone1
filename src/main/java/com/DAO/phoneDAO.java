@@ -9,6 +9,8 @@ public boolean addPhone(product p);
 	
 	public List<product> AllPhone();
 	
+	public List<product> ListPhone();
+	
 	public product getPhoneById(int ID);
 	
 	public boolean updateEditPhone(product p);

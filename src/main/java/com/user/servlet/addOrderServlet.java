@@ -34,7 +34,7 @@ public class addOrderServlet extends HttpServlet{
 			
 			orderPhone o = new orderPhone();
 			Random r = new Random();
-			o.setOid("order-00"+r.nextInt(1000));
+			o.setOid("order00"+r.nextInt(1000));
 			o.setOname(nameo);
 			o.setOgmail(gmailo);
 			o.setOphone(phoneo);
